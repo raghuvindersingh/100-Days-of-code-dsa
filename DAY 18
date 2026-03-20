@@ -1,0 +1,11 @@
+Given an array of integers, rotate the array to the right by k positions.
+
+ANS-n = int(input())
+arr = list(map(int, input().split()))
+k = int(input())
+
+k = k % n   # handle k > n
+
+rotated = arr[-k:] + arr[:-k]
+
+print(*rotated)
