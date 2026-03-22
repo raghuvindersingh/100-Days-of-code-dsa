@@ -1,0 +1,33 @@
+Count Nodes in Linked List
+
+ANS-
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Input
+n = int(input())
+arr = list(map(int, input().split()))
+
+# Create linked list
+head = None
+temp = None
+
+for num in arr:
+    new_node = Node(num)
+    if head is None:
+        head = new_node
+        temp = new_node
+    else:
+        temp.next = new_node
+        temp = new_node
+
+# Count nodes
+count = 0
+current = head
+while current:
+    count += 1
+    current = current.next
+
+print(count)
