@@ -1,0 +1,68 @@
+Count Occurrences of an Element in Linked List - Implement using linked list with dynamic memory allocation.
+
+ANS-
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+// create list
+struct node* create(int n)
+{
+    struct node *head=NULL, *temp, *newnode;
+    int i, value;
+
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&value);
+
+        newnode = (struct node*)malloc(sizeof(struct node));
+        newnode->data = value;
+        newnode->next = NULL;
+
+        if(head == NULL)
+            head = temp = newnode;
+        else
+        {
+            temp->next = newnode;
+            temp = newnode;
+        }
+    }
+    return head;
+}
+
+// count occurrences
+int countKey(struct node *head, int key)
+{
+    int count = 0;
+
+    while(head != NULL)
+    {
+        if(head->data == key)
+            count++;
+
+        head = head->next;
+    }
+    return count;
+}
+
+int main()
+{
+    int n, key, result;
+    struct node *head;
+
+    scanf("%d",&n);
+    head = create(n);
+
+    scanf("%d",&key);
+
+    result = countKey(head, key);
+
+    printf("%d", result);
+
+    return 0;
+}
